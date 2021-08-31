@@ -1,0 +1,15 @@
+<div class="row">
+    <%= link_to "Back", organization_path(@organization), class: "btn btn-primary w-50 m-auto" %>
+</div>
+<div class="row justify-content-center">
+    <h3 class="text-uppercase fs-bold m-auto text-center mt-4">Edit node</h3>
+    <div class="col-sm-8 m-auto">
+        <%= form_for(@node, url: organization_node_path(@organization, @node), method: :put) do |f| %>
+            <%= f.label :name, "Name", class: "form-label" %>
+            <%= f.text_field :name, class: "form-control" %>
+            <%= f.label :parent_node_id, "Node parent", class: "form-label" %>
+            <%=  f.select(:parent_node_id, options_from_collection_for_select(Node.where(parent_node_id: nil).where.not(id: @node.id), "id", "name"), {}, {class: "form-select"}) %>
+            <%= f.submit "Save", class: "btn btn-info mt-4 d-flex m-auto w-50 justify-content-center", disable_with: 'Saving...' %>
+        <% end %>
+    </div>
+</div>

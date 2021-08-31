@@ -1,0 +1,22 @@
+<div class="row">
+    <%= link_to "Back", organizations_path, class: "btn btn-primary w-50 m-auto" %>
+</div>
+
+<div class="row mt-4">
+    <%= link_to "Create node", new_organization_node_path(@organization), class: "btn btn-primary w-50 m-auto" %>
+    <h3 class="text-uppercase fs-bold m-auto text-center mt-4 mb-4"><%= @organization.name %>: Nodes index</h3>
+    <% @organization.nodes.each do |node| %>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <%= node.name %>
+                </div>
+                <div class="card-body">
+                    <%= link_to "Details", organization_node_path(@organization, node), class: "btn btn-primary" %>
+                    <%= link_to "Edit", edit_organization_node_path(@organization, node), class: "btn btn-info" %>
+                    <%= link_to "Destroy", organization_node_path(@organization, node), method: :delete, class: "btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
