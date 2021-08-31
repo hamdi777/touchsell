@@ -1,0 +1,18 @@
+<div class="row">
+    <%= link_to "Create Organization", new_organization_path, class: "btn btn-primary w-50 m-auto" %>
+</div>
+
+<div class="row mt-4">
+    <% @organizations.each do |org| %>
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <%= org.name %>
+                </div>
+                <div class="card-body">
+                    <%= link_to "Details", organization_path(org), class: "btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
